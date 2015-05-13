@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Cambio de Contrase&ntilde;a - Nayar Consultora{% endblock %}
+{% block body %}
+    <span class="pathway">Cambio de Contrase&ntilde;a</span>
+    <div class="clr">
+	{% if texto is defined %}
+	    {{ texto }}
+	{% endif %}
+    </div>
+
+		<div id="contentblock">
+
+		    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+
+
+		    <!-- Fin codigo ads -->
+		</div>
+
+		<div class="clr"></div>
+{% endblock %}

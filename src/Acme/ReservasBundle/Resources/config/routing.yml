@@ -1,0 +1,24 @@
+nueva_obra:
+    path:     /admin/obranueva
+    defaults: { _controller: AcmeReservasBundle:Default:nuevaObra }
+
+editar_obra:
+    path:     /admin/obraseditar/{id}
+    defaults: { _controller: AcmeReservasBundle:Default:editarObra }
+
+AcmeReservasBundle_admin_obras:
+        resource: "@AcmeReservasBundle/Resources/config/routing/obra.yml"
+        prefix:   /admin/obras
+
+AcmeReservasBundle_admin_fechaobra:
+        resource: "@AcmeReservasBundle/Resources/config/routing/fechaobra.yml"
+        prefix:   /admin/fechaobra
+
+AcmeReservasBundle_admin_horarioobra:
+        resource: "@AcmeReservasBundle/Resources/config/routing/horarioobra.yml"
+        prefix:   /admin/horarioobra
+
+reservas_paso2:
+    path:     /reservas/paso2
+    defaults: { _controller: AcmeReservasBundle:Default:ReservaPaso2 }
+

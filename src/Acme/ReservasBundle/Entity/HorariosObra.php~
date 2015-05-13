@@ -1,0 +1,27 @@
+<?php
+namespace Acme\ReservasBundle\Entity;
+use Doctrine\ORM\Mapping AS ORM;
+
+/**
+ * @ORM\Entity
+ */
+class HorariosObra
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="time", nullable=false)
+     */
+    private $hora;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Acme/ReservasBundle\FechasObra", inversedBy="horariosObra")
+     * @ORM\JoinColumn(name="fechas_id", referencedColumnName="id", nullable=false)
+     */
+    private $fechasObra;
+}

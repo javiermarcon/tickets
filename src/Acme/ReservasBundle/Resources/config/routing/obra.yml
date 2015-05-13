@@ -1,0 +1,30 @@
+admin_obras:
+    pattern:  /
+    defaults: { _controller: "AcmeReservasBundle:Obra:index" }
+
+admin_obras_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AcmeReservasBundle:Obra:show" }
+
+admin_obras_new:
+    pattern:  /new
+    defaults: { _controller: "AcmeReservasBundle:Obra:new" }
+
+admin_obras_create:
+    pattern:  /create
+    defaults: { _controller: "AcmeReservasBundle:Obra:create" }
+    requirements: { _method: post }
+
+admin_obras_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AcmeReservasBundle:Obra:edit" }
+
+admin_obras_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AcmeReservasBundle:Obra:update" }
+    requirements: { _method: post|put }
+
+admin_obras_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AcmeReservasBundle:Obra:delete" }
+    requirements: { _method: post|delete }

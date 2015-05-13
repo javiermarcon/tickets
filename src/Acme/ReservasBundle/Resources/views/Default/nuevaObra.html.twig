@@ -1,0 +1,51 @@
+{% extends 'AcmeUserBundle:User:layout.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('js/jquery.sfprototypeman.js') }}"></script>
+{% endblock %}
+
+{% block page %}
+
+<div class="well">
+{{ form_start(form) }}
+    <div class="col-md-2 well">
+    {# render the task's only field: description #}
+    {{ form_row(form.nombre) }}
+    {{ form_row(form.descripcion) }}
+    {{ form_row(form.foto) }}
+    </div>
+    <h3>Fechas en que se va a publicar la obra</h3>
+    <div class="col-md-3 well">
+    <ul class="fechasobra"
+    data-prototype="{{ form_widget(form.fechasobra.vars.prototype) | e }}"
+    >
+        {# iterate over each existing tag and render its only field: name #}
+        {% for fec in form.fechasobra %}
+            <li>{{ form_row(fec.fecha) }}</li>
+	    <label for="">horas</label>
+	    <ul class="horaobra" data-prototype="{{ form_widget(form.fechasobra.vars.prototype.children['horariosobra'].vars.prototype) | e }}">
+	    {% for hora in fec.horas %}
+	        <li>{{ form_row(hora.text) }}<li>
+	    {% endfor %}
+	    </ul>
+	    <a href="#" id="add-another-hour">Add another email</a>
+	{% endfor %}
+
+    </ul>
+    </div>
+{{ form_end(form) }}
+</div>
+<script>
+    // setup an "add a tag" link
+
+jQuery(document).ready(function() {
+    // Get the ul that holds the collection of tags
+    jQuery().sfPrototypeMan();
+
+
+});
+
+
+</script>
+{% endblock %}

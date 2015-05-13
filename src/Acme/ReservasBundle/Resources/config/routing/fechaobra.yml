@@ -1,0 +1,30 @@
+admin_fechaobra:
+    pattern:  /
+    defaults: { _controller: "AcmeReservasBundle:FechaObra:index" }
+
+admin_fechaobra_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AcmeReservasBundle:FechaObra:show" }
+
+admin_fechaobra_new:
+    pattern:  /new
+    defaults: { _controller: "AcmeReservasBundle:FechaObra:new" }
+
+admin_fechaobra_create:
+    pattern:  /create
+    defaults: { _controller: "AcmeReservasBundle:FechaObra:create" }
+    requirements: { _method: post }
+
+admin_fechaobra_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AcmeReservasBundle:FechaObra:edit" }
+
+admin_fechaobra_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AcmeReservasBundle:FechaObra:update" }
+    requirements: { _method: post|put }
+
+admin_fechaobra_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AcmeReservasBundle:FechaObra:delete" }
+    requirements: { _method: post|delete }

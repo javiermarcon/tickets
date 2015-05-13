@@ -1,0 +1,312 @@
+<?php
+// src/Acme/UserBundle/Entity/User.php
+namespace Acme\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * Acme\UserBundle\Entity\User
+ *
+ * @ORM\Table(name="users")
+ * @ORM\Entity(repositoryClass="Acme\UserBundle\Entity\UserRepository")
+ * @UniqueEntity(fields="email", message="Ese email ya existe.")
+ * @UniqueEntity(fields="name", message="Ese nombre ya existe.")
+ * @UniqueEntity(fields="username", message="Ese nombre de usuario ya existe.")
+ */
+class User implements UserInterface, \Serializable
+{
+    private $entityManager;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * 
+     * 
+     */
+    private $id1;
+
+    /**
+     * 
+     * 
+     */
+    private $id2;
+
+    /**
+     * @ORM\Column(type="string", unique=true, length=50, nullable=true)
+     */
+    private $nombre;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $apellido;
+
+    /**
+     * 
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", unique=true, length=25, nullable=true)
+     */
+    private $username;
+
+    /**
+     * @ORM\Column(type="string", length=64, nullable=true)
+     */
+    private $password;
+
+    /**
+     * @ORM\Column(type="string", unique=true, length=100, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=30, nullable=true)
+     */
+    private $telefono;
+
+    /**
+     * @ORM\Column(type="string", length=30, nullable=true)
+     */
+    private $celular;
+
+    /**
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    private $usertype;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true, name="is_active")
+     */
+    private $isActive;
+
+    /**
+     * 
+     * 
+     */
+    private $address;
+
+    public function __construct()
+    {
+        $this->isActive = true;
+        // may not be needed, see section on salt below
+        // $this->salt = md5(uniqid(null, true));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSalt()
+    {
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRoles()
+    {
+        #return array('ROLE_USER');
+        return array($this->usertype);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function eraseCredentials()
+    {
+    }
+
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->name,
+            $this->username,
+            $this->email,
+            $this->password,
+            $this->usertype,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->name,
+            $this->username,
+            $this->email,
+            $this->password,
+            $this->usertype,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized);
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return User
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     * @return User
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set usertype
+     *
+     * @param string $usertype
+     * @return User
+     */
+    public function setUsertype($usertype)
+    {
+        $this->usertype = $usertype;
+
+        return $this;
+    }
+
+    /**
+     * Get usertype
+     *
+     * @return string 
+     */
+    public function getUsertype()
+    {
+        return $this->usertype;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     * @return User
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    
+}

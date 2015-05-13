@@ -1,0 +1,55 @@
+{% extends 'AcmeUserBundle:User:layout.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/teatro.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+{#{ parent() }#}
+
+<script>
+    var mapa_asientos = {{ mapa_asientos | raw }}
+    var asientos_ocupados = {{ asientos_ocupados | raw }}
+</script>
+
+<script type="text/javascript" src="{{ asset('js/jquery.seat-charts.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/asientos_teatro.js') }}"></script>
+{% endblock %}
+
+{% block page %}
+
+<div class="well">
+
+    <div class="demo">
+	<div class="booking-details">
+	    <table style="width:100%; border:1;">
+		<tr>
+		  <td>Pelicula: Sap pepe y los retondos</td>
+		  <td>Funcion: 17/04/2015 22:30</td>
+		  <td>Costo Total: $ <span id="total">0</span></td>
+		  <td rowspan="3">
+		    <ul id="selected-seats"></ul>
+		  </td>
+		</tr>
+		<tr>
+		  <td><div id="legend"></div></td>
+		  <td>&nbsp;</td>
+		  <td>cantidad: <span id="counter">0</span></td>
+		</tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td><button class="checkout-button">comprar</button></td>
+		  <td>&nbsp;</td>
+		</tr>
+	      </table>
+		</div>
+   		<div id="seat-map">
+			<div class="front">E S C E N A R I O</div>
+		</div>
+		
+		<div style="clear:both"></div>
+   </div>
+
+
+</div>
+{% endblock %}

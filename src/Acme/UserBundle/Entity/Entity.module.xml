@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<skipper version="3.1.2.1193" mvc="Symfony2" orm="Doctrine2">
+  <module name="Acme\UserBundle\Entity" import-format="Doctrine2Php" import-path="." uuid="e6a3f547-be87-410a-91e3-cff7cf864079">
+    <entity name="User" uuid="f443b965-d326-4c18-8106-8df971201c45">
+      <field name="id" type="integer" required="true" primary="true" uuid="6062ae7b-3b4e-4f14-8927-bdffe49cf505">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="nombre" type="string" size="50" required="true" uuid="b9a7d684-cc93-4959-ba12-45d46ef34af7"/>
+      <field name="apellido" type="string" size="50" required="true" uuid="c945ce34-5118-4079-a395-542aa975f14a"/>
+      <field name="username" type="string" size="25" required="true" unique="true" uuid="6ec66c78-2647-40ad-bff1-fd92c8f7f88c"/>
+      <field name="password" type="string" size="64" required="true" uuid="11e5506c-ebe8-490f-a12f-0f31e8975541"/>
+      <field name="email" type="string" size="100" required="true" unique="true" uuid="b739798f-0d20-471b-9428-7cac8a5a25df"/>
+      <field name="telefono" type="string" size="30" uuid="c2cb2a26-4fb8-4e14-b209-f145f2e5f37f"/>
+      <field name="celular" type="string" size="30" uuid="3eeeac9b-4e1f-479e-bb71-d67a5e94a09e"/>
+      <field name="usertype" type="string" size="25" required="true" uuid="67c13974-52ea-402d-a399-19b8a68a7cc2"/>
+      <field name="isActive" type="boolean" required="true" uuid="c340e0b0-1fb4-422a-b728-5f89a2323560">
+        <orm-attributes>
+          <attribute name="column">is_active</attribute>
+        </orm-attributes>
+      </field>
+      <orm-attributes>
+        <attribute name="repository-class">Acme\UserBundle\Entity\UserRepository</attribute>
+        <attribute name="table">users</attribute>
+        <attribute name="export-file-name">User.php</attribute>
+      </orm-attributes>
+    </entity>
+    <orm-attributes>
+      <attribute name="namespace">Acme\UserBundle\Entity</attribute>
+    </orm-attributes>
+  </module>
+  <visual-data>
+    <module uuid="e6a3f547-be87-410a-91e3-cff7cf864079" bg-color="4294900968" size-x="0" size-x2="150" size-y="0" size-y2="259"/>
+    <entity uuid="f443b965-d326-4c18-8106-8df971201c45" bg-color="4294967295" hdr-color="4292006610" position-x="20" position-y="40" size-x="0" size-x2="110" size-y="0" size-y2="157"/>
+  </visual-data>
+</skipper>

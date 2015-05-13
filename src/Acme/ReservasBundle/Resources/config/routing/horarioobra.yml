@@ -1,0 +1,30 @@
+admin_horarioobra:
+    pattern:  /
+    defaults: { _controller: "AcmeReservasBundle:HorarioObra:index" }
+
+admin_horarioobra_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AcmeReservasBundle:HorarioObra:show" }
+
+admin_horarioobra_new:
+    pattern:  /new
+    defaults: { _controller: "AcmeReservasBundle:HorarioObra:new" }
+
+admin_horarioobra_create:
+    pattern:  /create
+    defaults: { _controller: "AcmeReservasBundle:HorarioObra:create" }
+    requirements: { _method: post }
+
+admin_horarioobra_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AcmeReservasBundle:HorarioObra:edit" }
+
+admin_horarioobra_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AcmeReservasBundle:HorarioObra:update" }
+    requirements: { _method: post|put }
+
+admin_horarioobra_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AcmeReservasBundle:HorarioObra:delete" }
+    requirements: { _method: post|delete }
